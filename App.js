@@ -58,7 +58,7 @@ export default function App() {
           Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:13306:10)
           at FlowParserMixin.parseFunctionBody (/Users/tiwatposri/Desktop/My
           Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:12110:24){" "}
+          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:12110:24ss){" "}
         </Text>
       </ScrollView>
       {/* <View
