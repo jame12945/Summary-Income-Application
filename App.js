@@ -1,7 +1,9 @@
-import { Text, View, Image, ScrollView } from "react-native";
+import { Text, View, Image, ScrollView, Alert, Button } from "react-native";
+import { useState } from "react";
 import { myStyle } from "./styles/mystyle";
 const logo = require("./assets/icon.png");
 export default function App() {
+  const [developer, setDeveloper] = useState({ name: "Gem", year: 2025 });
   return (
     //first view is container
     //second view is item
@@ -14,52 +16,17 @@ export default function App() {
           source={{ uri: "https://picsum.photos/id/9/367/267" }}
           style={myStyle.image}
         ></Image>
-        <Text style={myStyle.header}>Hello World!</Text>
-        <Text style={myStyle.content}>Developed By Jame</Text>
-
+        <Text style={myStyle.header}>Hello World!!</Text>
         <Text style={myStyle.content}>
-          {" "}
-          at FlowParserMixin.parseStatementLike (/Users/tiwatposri/Desktop/My
-          Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:2949:24)
-          at FlowParserMixin.parseStatementListItem
-          (/Users/tiwatposri/Desktop/My Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:12756:17)
-          at FlowParserMixin.parseBlockOrModuleBlockBody
-          (/Users/tiwatposri/Desktop/My Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:13325:61)
-          at FlowParserMixin.parseBlockBody (/Users/tiwatposri/Desktop/My
-          Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:13318:10)
-          at FlowParserMixin.parseBlock (/Users/tiwatposri/Desktop/My
-          Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:13306:10)
-          at FlowParserMixin.parseFunctionBody (/Users/tiwatposri/Desktop/My
-          Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:12110:24){" "}
+           Developed By {developer.name} | {developer.year}
         </Text>
-
-        <Text style={myStyle.content}>
-          {" "}
-          at FlowParserMixin.parseStatementLike (/Users/tiwatposri/Desktop/My
-          Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:2949:24)
-          at FlowParserMixin.parseStatementListItem
-          (/Users/tiwatposri/Desktop/My Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:12756:17)
-          at FlowParserMixin.parseBlockOrModuleBlockBody
-          (/Users/tiwatposri/Desktop/My Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:13325:61)
-          at FlowParserMixin.parseBlockBody (/Users/tiwatposri/Desktop/My
-          Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:13318:10)
-          at FlowParserMixin.parseBlock (/Users/tiwatposri/Desktop/My
-          Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:13306:10)
-          at FlowParserMixin.parseFunctionBody (/Users/tiwatposri/Desktop/My
-          Project/React Native
-          Project/MyApplication/myapp/node_modules/@babel/parser/lib/index.js:12110:24ss){" "}
-        </Text>
+        <Button
+          title="Update Developer"
+          onPress={() =>
+            //Alert.alert("Hello Button", "Develop By Reat Native")}
+            setDeveloper({ name: "Tiwat Posri", year: 2568 })
+          }
+        ></Button>
       </ScrollView>
       {/* <View
         style={{
