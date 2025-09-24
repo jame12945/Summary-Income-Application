@@ -1,6 +1,7 @@
 import { Text, View, Image, ScrollView, Alert, Button } from "react-native";
 import { useState } from "react";
 import { myStyle } from "./styles/mystyle";
+import { Person } from "./components/person";
 const logo = require("./assets/icon.png");
 export default function App() {
   const [developer, setDeveloper] = useState({ name: "Gem", year: 2025 });
@@ -10,7 +11,11 @@ export default function App() {
     //third view is item
     //fourth view is item
     <View style={myStyle.container}>
-      <ScrollView>
+      <Person name = {"Jame"} age={25}/>
+      <Person name = {"John"} age={30}/>
+      <Person name = {"Doe"} age={35}/>
+
+      {/* <ScrollView>
         <Image source={logo} style={myStyle.image}></Image>
         <Image
           source={{ uri: "https://picsum.photos/id/9/367/267" }}
@@ -27,7 +32,7 @@ export default function App() {
             setDeveloper({ name: "Tiwat Posri", year: 2568 })
           }
         ></Button>
-      </ScrollView>
+      </ScrollView> */}
       {/* <View
         style={{
           width: 80,
