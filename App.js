@@ -1,19 +1,80 @@
-import { Text, View, Image, ScrollView, Alert, Button } from "react-native";
-import { useState } from "react";
+import {
+  Text,
+  View,
+  Image,
+  ScrollView,
+  Alert,
+  Button,
+  FlatList,
+} from "react-native";
+import { useState, useEffect } from "react";
 import { myStyle } from "./styles/mystyle";
 import { Person } from "./components/person";
 const logo = require("./assets/icon.png");
 export default function App() {
   const [developer, setDeveloper] = useState({ name: "Gem", year: 2025 });
+  const defaultData = [
+    { id: 1, name: "Jame", age: 25 },
+    { id: 2, name: "John", age: 30 },
+    { id: 3, name: "Doe", age: 35 },
+    { id: 4, name: "Johan", age: 45 },
+  ];
+  const [timer, setTimer] = useState(0);
+
+  const [data, setData] = useState(defaultData);
+  useEffect(() => {
+    let intervalId;
+    if (data.length === 0) {
+      setTimer(5);
+      intervalId = setInterval(() => {
+        setTimer((prev) => {
+          if (prev === 1) {
+            setData(defaultData);
+            return 0;
+          }
+          return prev - 1;
+        });
+      }, 1000);
+    } else if (timer === 0 && data.length > 0) {
+      setTimer(0);
+    }
+    return () => clearTimeout(intervalId);
+  }, [data]);
+
+  const deleteData = (id) => {
+    console.log("Delete ID: " + id);
+    setData((prevData) => prevData.filter((item) => item.id !== id));
+  };
   return (
     //first view is container
     //second view is item
     //third view is item
     //fourth view is item
     <View style={myStyle.container}>
-      <Person name = {"Jame"} age={25}/>
-      <Person name = {"John"} age={30}/>
-      <Person name = {"Doe"} age={35}/>
+      <FlatList
+        data={data}
+        renderItem={({ item }) => (
+          <Person item={item} deleteData={deleteData} />
+        )}
+        keyExtractor={(item) => item.id}
+        ListHeaderComponent={
+          <Text
+            style={{ alignSelf: "center", fontSize: 24, fontWeight: "bold" }}
+          >
+            People
+          </Text>
+        }
+        ListEmptyComponent={
+          <Text
+            style={{ alignSelf: "center", fontSize: 18, fontWeight: "bold" }}
+          >
+            No Data
+          </Text>
+        }
+      />
+      <View style={{alignItems: "center"}}>
+        <Text style = {myStyle.content}>timer: {timer}</Text>
+      </View>
 
       {/* <ScrollView>
         <Image source={logo} style={myStyle.image}></Image>
