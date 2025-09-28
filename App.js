@@ -10,6 +10,8 @@ import {
 import { useState, useEffect } from "react";
 import { myStyle } from "./styles/mystyle";
 import { Person } from "./components/person";
+import AddForm from "./components/AddForm";
+
 const logo = require("./assets/icon.png");
 export default function App() {
   const [developer, setDeveloper] = useState({ name: "Gem", year: 2025 });
@@ -45,6 +47,17 @@ export default function App() {
     console.log("Delete ID: " + id);
     setData((prevData) => prevData.filter((item) => item.id !== id));
   };
+
+  const insertData = (name, age) => {
+    console.log("Insert Name , age: ", name + ", ", age);
+    if (name) {
+      setData((prevData) => {
+        return [{ id: Math.random().toString(), name, age }, ...prevData];
+      });
+    } else {
+      Alert.alert("Error", "Please enter a name");
+    }
+  };
   return (
     //first view is container
     //second view is item
@@ -72,8 +85,9 @@ export default function App() {
           </Text>
         }
       />
-      <View style={{alignItems: "center"}}>
-        <Text style = {myStyle.content}>timer: {timer}</Text>
+      <AddForm insertData={insertData} />
+      <View style={{ alignItems: "center" }}>
+        <Text style={myStyle.content}>timer: {timer}</Text>
       </View>
 
       {/* <ScrollView>

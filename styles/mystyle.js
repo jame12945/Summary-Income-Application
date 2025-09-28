@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const myStyle = StyleSheet.create({
   container: {
-    backgroundColor: "pink",
+    backgroundColor: "white",
     flex: 1,
     // marginTop: 50,
     // marginBottom: 50,
@@ -33,9 +33,19 @@ export const myStyle = StyleSheet.create({
     borderColor: "black",
     borderRadius: 10,
     borderStyle: "dashed",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
-  //   image:{
-  //     width:300,
-  //     height:300,
-  //   }
+
+  input: {
+    borderBottomColor: "#ddd",
+    borderBottomWidth: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    marginBottom: 15,
+    //   image:{
+    //     width:300,
+    //     height:300,
+    //   }
+  },
 });
